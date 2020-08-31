@@ -1,0 +1,13 @@
+.container {
+  text-align: center;
+  margin: 0 auto;
+}
+
+button, h1 {
+  display: inline-block;
+  cursor: pointer;
+}
+
+li.holiday {
+  color: red;
+}

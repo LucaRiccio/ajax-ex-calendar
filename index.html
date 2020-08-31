@@ -4,8 +4,25 @@
     <meta charset="utf-8">
     <title>ajax-ex-calendar</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" charset="utf-8"></script>
   </head>
   <body>
+
+    <div class="container">
+      <button id="prev" type="button" name="button">>>></button>
+      <h1 class="month" data-this-date="2018-01-01"></h1>
+      <button id="next" type="button" name="button"><<<</button>
+      <ul class="month-list"></ul>
+    </div>
+
+
+
+    <script id="day-template" type="text/x-handlebars-template">
+      <li data-complete-date="{{completeDate}}"> {{day}} {{month}} </li>
+    </script>
+
     <script src="js/script.js" charset="utf-8"></script>
   </body>
 </html>
