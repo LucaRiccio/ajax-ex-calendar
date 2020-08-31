@@ -8,12 +8,25 @@
 // Chiedere all’API quali sono le festività per il mese scelto
 // Evidenziare le festività nella lista
 
- //https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0
-
-
 $(document).ready(function(){
 
   var dataCorrente = moment('2018-01-01'); // Memorizzo il mese di partenza
+
+  //Tasto Next
+  $("#next").click(function(){
+    dataCorrente.add(1, 'M');
+    $(".month-list li").remove();
+    insertDays(dataCorrente);
+    insertHolidays(dataCorrente);
+  });
+
+  //Tasto Prev
+  $("#prev").click(function(){
+    dataCorrente.subtract(1, 'M');
+    $(".month-list li").remove();
+    insertDays(dataCorrente);
+    insertHolidays(dataCorrente);
+  });
 
   insertDays(dataCorrente);
   insertHolidays(dataCorrente);
@@ -74,7 +87,7 @@ function insertDays(data){
     var context = {
       day: addZero(i), // Ricavo il giorno utilizzando la i.
       month: month,  // Ricavo il mese dalla variabile precedentemente dichiarata.
-      completeDate: year + " " + data.format('MM') + " " + addZero(i) // Ottengo la data completa
+      completeDate: year + "-" + data.format('MM') + "-" + addZero(i) // Ottengo la data completa
     };
 
     var html = template(context);
