@@ -1,11 +1,13 @@
 .container {
   text-align: center;
   margin: 0 auto;
+  list-style: none;
 }
 
 button, h1 {
   display: inline-block;
   cursor: pointer;
+  height: 40px;
 }
 
 li.holiday {

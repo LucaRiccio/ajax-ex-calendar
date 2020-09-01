@@ -56,20 +56,15 @@ function insertHolidays(data){
       },
       success: function(risposta){
         var vacanze = risposta.response;
-        //console.log(vacanze);
         for (var i = 0; i < vacanze.length; i++){
           var vacanza = vacanze[i];
           console.log(vacanza);
           var listItem = $('li[data-complete-date="' + vacanza.date + '"]');
           console.log(listItem);
           if (listItem){
-            // listItem.append('-' + vacanza.name);
-            // listItem.addClass('holiday');
             listItem.addClass('holiday');
             listItem.text(listItem.text() + ' - ' + vacanza.name);
-            console.log("test");
           }
-
         }
       },
       error: function(){
@@ -83,9 +78,7 @@ function insertHolidays(data){
 function insertDays(data){
   var month = data.format('MMMM'); // Memorizzo in una var il mese.
   var year = data.format('YYYY'); // Memorizzo in una var l'anno.
-
   $("h1.month").html(month + " " + year); // Ottengo mese e anno
-
   var daysMonth = data.daysInMonth();  // Ottengo automaticamente il numero di giorni che il mese contiene.
 
   // Ciclo for che genera automaticamente i giorni del mese.
@@ -102,7 +95,6 @@ function insertDays(data){
     var html = template(context);
     $(".month-list").append(html);
   }
-
 }
 
 //Funzione per aggiungere lo zero
