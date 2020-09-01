@@ -12,20 +12,28 @@ $(document).ready(function(){
 
   var dataCorrente = moment('2018-01-01'); // Memorizzo il mese di partenza
 
-  //Tasto Next
+  // Tasto Next
   $("#next").click(function(){
-    dataCorrente.add(1, 'M');
-    $(".month-list li").remove();
-    insertDays(dataCorrente);
-    insertHolidays(dataCorrente);
+    if (dataCorrente.month() == 11){
+      alert("Fine calendario!");
+    } else {
+      dataCorrente.add(1, 'M');
+      $(".month-list li").remove();
+      insertDays(dataCorrente);
+      insertHolidays(dataCorrente);
+    }
   });
 
-  //Tasto Prev
+  // Tasto prev
   $("#prev").click(function(){
-    dataCorrente.subtract(1, 'M');
-    $(".month-list li").remove();
-    insertDays(dataCorrente);
-    insertHolidays(dataCorrente);
+    if (dataCorrente.month() == 0){
+      alert("Fine calendario!");
+    } else {
+      dataCorrente.subtract(1, 'M');
+      $(".month-list li").remove();
+      insertDays(dataCorrente);
+      insertHolidays(dataCorrente);
+    }
   });
 
   insertDays(dataCorrente);
@@ -36,6 +44,7 @@ $(document).ready(function(){
 
 // ***FUNZIONI***
 
+// Funzione per inserimento feste.
 function insertHolidays(data){
   $.ajax(
     {
@@ -70,7 +79,7 @@ function insertHolidays(data){
   );
 }
 
-
+// Funzione per inserimento giorni nel calendario.
 function insertDays(data){
   var month = data.format('MMMM'); // Memorizzo in una var il mese.
   var year = data.format('YYYY'); // Memorizzo in una var l'anno.
